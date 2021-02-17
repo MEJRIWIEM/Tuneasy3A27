@@ -1,0 +1,46 @@
+
+problematique :
+La problematique qui nous a inspire a la creation de notre site et app etait que le touriste venu de l'etranger ou i=buen le touriste local est parfois limité
+dans ses choix d'activite,d'hebergement,.. et parfois se trouve obligé de se resoudre a des solutions qui prennet bcp de temps et d'energie  comme  se perdre entre les agence de locations et dans les pages fb et autres,
+a la recherche du bon plan sans se ruiné financierement .
+
+
+
+
+Solution :
+pour notre application on a voulu remedier au problemes existant dans le site concurant et faciliter l’experience  des touristes et des locaux en leur 
+offrant tous les services nécessaires pour satisfaire leurs besoins durant toute la période du voyage. 
+,parmis les solutions proposes :
+-offir la possibilite a un user de proposer ses servvices pour les activite
+-ajouter des services dedie a l'hebergement propose par des utilisateur pro 
+-permettre a l'admistratuer d'avoir la main sur tt les modules 
+-Offrir d'autres types de divertissement comme les competition pour diversifier les activite ppur le touriste/tunisiens 
+-permettre a plusiers employe travaillant dans le secteur  du tourisme/culture d'operer atravers note site/app (car a causes de la pandemie mondiales il ont 
+ on perdu de la visibilite .)
+-Avoir une boutique e ligne pour la ventes d'articles souvenirs (tasses ,produit typiquement tunisiens)
+-Proposer une partie dedie a la location de materiel pour une activite (on s'est mis a la place du touriste qui veut participer a une act par exp camping mais qui na pas le materiel pour) 
+-Faire connaitre les meilleurs restaurants du pays 
+
+
+
+
+
+
+Etude de l'existant  :pour ce qui est des sites dedie au tourisme et au ativite touristique un sort du lot "getyourGuide", c'est une plateforme de réservation de visites,
+ attractions, excursions et activités proposé par le site lui meme .
+
+
+  
+
+
+critique de l'esxistant :pour lacritique du site nous avons mis l'accent sur les point sur lequel on s'est baseé pour degager la meilleur solution
+
+-le site n'offrent que des reservations pour des  activite 
+-les act sont prposes seulement par l'admin 
+-en  tant que utilisateur de "getyouguide"on peut seulement beneficier de services
+
+
+acteurs :
+uilistaeur pro :ca veut dire un utilistauer qui peut offrir des services 
+utilisateur : exp un touriste ou bien un tunisien voulant beneficier de services 
+administrateur:qui gere plusuierus modules on peut citer la boutique souvenirs ..... 
