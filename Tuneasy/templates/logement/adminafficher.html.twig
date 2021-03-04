@@ -1,0 +1,86 @@
+{% extends 'logement/admin.html.twig' %}
+
+{% block body %}
+
+    <form action="#" class="rt-form rt-line-form flight-lable">
+        <div class="row">
+
+
+
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Liste des annonces </h4>
+
+
+                        <p class="card-description">
+                            1 Annonce
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Photo
+                                    </th>
+                                    <th>
+                                        Titre
+                                    </th>
+                                    <th>
+                                        Ville
+                                    </th>
+                                    <th>
+                                        Prix par nuit
+                                    </th>
+
+                                    <th class="text-center">
+                                        Actions
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for l in logement %}
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="../../images/faces/face1.jpg" alt="image"/>
+                                        </td>
+                                        <td>
+                                            {{ l.titre }}
+                                        </td>
+                                        <td>
+                                           {{ l.ville }}
+                                        </td>
+                                        <td>
+                                            {{ l.prixnuit }}
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ path('afficherdetails', {'id': l.id_logement}) }}"> Aperçu</a>
+                                            <a class="btn btn-secondary" href=""> Valider</a>
+                                            <a href="{{ path('delete_logementadmin', {'id': l.id_logement}) }}" class="btn btn-danger"> Supprimer</a>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div><!-- /.row -->
+    </form>
+
+{% endblock  %}

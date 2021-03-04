@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mode hote</title>{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/datepicker.min.css">
+    <link rel="stylesheet" href="assets/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/icofont.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/slider-range.css">
+    <link rel="stylesheet" href="assets/css/select2.min.css">
+    <link rel="stylesheet" href="assets/css/tippy.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+
+{% endblock %}
+
+
+
+
+    {% block logos %}
+        <a href="index-2.html" class="brand-logo"><img src="assets/images/logo/logo-white.png" alt=""></a>
+        <a href="index-2.html" class="sticky-logo"><img src="assets/images/logo/logo.png" alt=""></a>
+    {% endblock %}
+
+
+{% block body %}
+    <div class="rt-breadcump rt-breadcump-height">
+        <div class="rt-page-bg rtbgprefix-cover" style="background-image: url(assets/images/backgrounds/bredcump.png)">
+        </div><!-- /.rt-page-bg -->
+        <div class="container">
+            <div class="row rt-breadcump-height">
+                <div class="col-12">
+                    <div class="breadcrumbs-content">
+                        <h3>Mode Hote</h3>
+                        <div class="breadcrumbs">
+                            <span class="divider"><i class="icofont-home"></i></span>
+                            <a href="#" title="Home">Home</a>
+                            <span class="divider"><i class="icofont-simple-right"></i></span>
+                            <a href="#">Mode Hote </a>
+                            <span class="divider"><i class="icofont-simple-right"></i></span>
+                            Gérer Les annonces
+
+                        </div><!-- /.breadcrumbs -->
+                    </div><!-- /.breadcrumbs-content -->
+                </div><!-- /.col-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.rt-bredcump -->
+
+
+
+
+    <section class="content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="rt-strong text-uppercase rt-mb-20"> Gérer les annonces </h4>
+                </div><!-- /.col-12 -->
+                <div class="col-xl-9">
+                    <div class="alert rt-alrt-1">
+                        <div class="media">
+
+                            <div class="media-body">
+                                <h6 class="mt-0 rt-semiblod">Bienvenue! </h6>
+                                Créer votre événement sur notre platforme pour toucher le plus grand nombre de tunisiens et de touristes!
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="flight-list-box rt-mb-30 pt-30">
+                        <h4 class="f-size-24 text-capitalize rt-mb-30  rt-semiblod">Entrez les détails</h4>
+
+
+                        <form action="#" class="rt-form rt-line-form flight-lable">
+                            <div class="row">
+
+
+
+
+                                <div class="col-lg-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Liste des annonces </h4>
+
+                                            <div   class="text-right">
+                                                <a class="rt-btn rt-gradient2 rt-rounded text-uppercase rt-Bshadow-1" href="{{ path('add_logement')}}"> créer une nouvelle annonce</a>
+                                            </div>
+                                            <p class="card-description">
+                                                1 Annonce
+                                            </p>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Image
+                                                        </th>
+                                                        <th>
+                                                          Titre
+                                                        </th>
+                                                        <th>
+                                                            Ville
+                                                        </th>
+                                                        <th>
+                                                            Prix par nuit
+                                                        </th>
+
+                                                        <th class="text-center">
+                                                            Actions
+                                                        </th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {% for l in logement %}
+                                                    <tr>
+                                                        <td class="py-1">
+                                                            <img src="../../images/faces/face1.jpg" alt="image"/>
+                                                        </td>
+                                                        <td>
+                                                            {{ l.titre }}
+                                                        </td>
+                                                        <td>
+                                                            {{ l.ville}}
+                                                        </td>
+                                                        <td>
+                                                            {{ l.prixnuit }} DT
+                                                        </td>
+
+                                                        <td>
+                                                            <a class="btn btn-primary" href="{{ path('afficherdetails', {'id': l.id_logement}) }}"> Aperçu</a>
+                                                            <a class="btn btn-secondary" href="{{ path('update', {'id': l.id_logement}) }}"> Modifier</a>
+                                                            <a href="{{ path('delete_logement', {'id': l.id_logement}) }}" class="btn btn-danger"> Supprimer</a>
+                                                        </td>
+
+                                                    </tr>
+                                                    {% endfor %}
+
+
+
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                            </div><!-- /.row -->
+                        </form>
+                    </div><!-- /.flight-list-box -->
+
+
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+    </section>
+{% endblock %}
+
+
+
+{% block javascripts %}
+    <script src="assets/js/jquery-2.2.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/instafeed.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.scrollUp.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyCy7becgYuLwns3uumNm6WdBYkBpLfy44k"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/slider-range.js"></script>
+    <script src="assets/js/vivus.min.js"></script>
+    <script src="assets/js/tippy.all.min.js"></script>
+    <script src="assets/js/app.js"></script>
+{% endblock %}
