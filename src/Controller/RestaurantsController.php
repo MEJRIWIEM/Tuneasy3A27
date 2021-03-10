@@ -28,8 +28,8 @@ class RestaurantsController extends AbstractController
 
         if ($request->isMethod("POST"))
         {
-            $nom_resto = $request->get("nom_resto");
-            $restaurant=$r->findBy(array("nom"=>$nom_resto));
+            $recherche = $request->get("recherche");
+            $restaurant=$r->findByKey($recherche);
 
         }
 
@@ -96,6 +96,7 @@ class RestaurantsController extends AbstractController
                 $file = $restaurant->getPhoto();
                 $filename = md5(uniqid()).'.'.$file->guessExtension();
                 $file->move($this->getParameter('upload_directory'),$filename);
+                $restaurant->setPhoto($filename);
                 $em=$this->getDoctrine()->getManager();
                 $em->persist($restaurant);
                 $em->flush();
