@@ -31,40 +31,20 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Recherche :</h4>
+                                <h4 class="card-title">Tri par date reservation :</h4>
+                                <form method="POST">
                                 <div class="form-group">
-                                    <label>Select A Restaurant </label>
-                                    <select class="js-example-basic-single w-100">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="AM">America</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="RU">Russia</option>
-                                    </select>
-                                </div>
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-primary" type="submit"value="Search" type="button">Tri</button>
+                                        </div>
 
 
-                                <div class="form-group">
-                                    <label>Select A Client </label>
-                                    <select class="js-example-basic-single w-100">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="AM">America</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="RU">Russia</option>
-                                    </select>
                                 </div>
+                                </form>
 
-                                <div class="form-group">
-                                    <label>Select A Dish </label>
-                                    <select class="js-example-basic-single w-100">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="AM">America</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="RU">Russia</option>
-                                    </select>
-                                </div>
+
+
 
                             </div>
                         </div>
@@ -77,6 +57,25 @@
 
                         }
                     </style>
+
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card" >
+                            <div class="card-body" >
+                                <h4 class="card-title">Statistique :</h4>
+                                <div class="centerbtnAMD" >
+                                    <div>
+                                        <button onclick="document.location='statistiques'" type="button" class="btn btn-dark btn-icon-text">
+                                            <i class="ti-stats-up btn-icon-append"></i>
+                                            Statistique
+
+                                        </button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="col-lg-12 grid-margin stretch-card">
@@ -99,6 +98,7 @@
                                             <th>DateReservation</th>
 
                                             <th>Delete</th>
+                                            <th>Email</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -107,10 +107,17 @@
                                             <td>{{ i.id_resPlat }}</td>
                                             <td>{{ i.clientId }}</td>
                                             <td>{{ i.platId }}</td>
-                                            <td> {{ i.Quantity }}</td>
+                                            <td>{{ i.Quantity }}</td>
                                             <td>{{ i.dateReservation|date }}</td>
 
                                             <td><a class="btn btn-danger btn-icon-text" href={{ path('deleteAdminReser',{'id': i.id_resPlat}) }}><i class="mdi mdi-delete btn-icon-prepend"></i> </a> </td>
+                                            {% if i.etat == false %}
+                                            <td><a class="btn btn-success btn-icon-text" href={{ path('ComfirmationReservation',{'id': i.id_resPlat}) }}><i class="ti-upload btn-icon-prepend"></i> </a> </td>
+
+                                            {% else %}
+                                                <td>Validee</td>
+                                            {% endif %}
+
                                         </tr>
                                         {% endfor %}
 
@@ -118,6 +125,7 @@
 
                                         </tbody>
                                     </table>
+                                    {{ knp_pagination_render(reservations) }}
                                 </div>
                             </div>
                         </div>

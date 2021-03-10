@@ -25,6 +25,11 @@ class Clients
     private $nom;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @ORM\OneToMany(targetEntity=ReservationPlats::class, mappedBy="clientId")
      */
     private $reservationPlats;
@@ -68,6 +73,19 @@ class Clients
 
         return $this;
     }
+
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+
+    public function setEmail($email): self
+    {
+        $this->email = $email;
+    }
+
 
     public function __toString()
     {

@@ -283,17 +283,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
-                        <div class="rt-banner-searchbox trip-search">
-                            <div class="rt-input-group">
-                                <div class="single-input  col-md-9">
-                                    <input type="text" class="form-control" placeholder="Reservations">
 
-                                </div><!-- /.single-input -->
-                                <div class="single-input  col-md-3">
-                                    <input type="submit" value="Search" class="rt-btn rt-gradient pill text-uppercase d-block rt-Bshadow-2">
-                                </div><!-- /.single-input -->
-                            </div><!-- /.rt-input-group -->
-                        </div><!-- /.rt-banner-searchbox -->
 
 
                     </div><!-- /.col-lg-10 -->
@@ -478,14 +468,8 @@
                                     </div><!-- /.row -->
                                     {% endfor %}
                                     <nav aria-label="Page navigation example">
-                                        <ul class="pagination  rt-paganation justify-content-center">
-                                            <li class="page-item"><a class="page-link" href="#"><i class="icofont-rounded-double-left"></i></a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                            <li class="page-item"><a class="page-link" href="#"><i class="icofont-rounded-double-right"></i></a>
-                                            </li>
+                                        <ul class="pagination justify-content-center">
+                                            {{ knp_pagination_render(reservations) }}
                                         </ul>
                                     </nav>
                                 </div><!-- /.col-lg-9 -->

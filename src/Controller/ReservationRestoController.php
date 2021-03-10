@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ReservationPlats;
 use App\Entity\Clients;
 use App\Entity\Plats;
+use App\Entity\Restaurants;
 use App\Form\ReservationPlatsType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler;
 use Doctrine\Common\Collections\ArrayCollection;
+use Knp\Component\Pager\PaginatorInterface;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
 
 class ReservationRestoController extends AbstractController
 {
@@ -28,10 +31,22 @@ class ReservationRestoController extends AbstractController
     /**
      * @Route("/reservationRestoAdmin", name="reservation_resto_admin")
      */
-    public function ResAdmin(): Response
+    public function ResAdmin(Request $request, PaginatorInterface $paginator): Response
     {
         $r=$this->getDoctrine()->getRepository(ReservationPlats::class);
         $reservation=$r->findAll();
+
+
+        if ($request->isMethod("POST"))
+        {
+            $reservation=$r->trierdate();
+        }
+
+        $reservation= $paginator->paginate(
+            $reservation,
+            $request->query->getInt('page',1),
+            3);
+
         return $this->render('Back/reservation_resto/MesReservationsAdmin.html.twig', array('reservations'=>$reservation));
 
     }
@@ -42,8 +57,11 @@ class ReservationRestoController extends AbstractController
 
 
         $reservation = new ReservationPlats();
+        $plat = $this->getDoctrine()->getRepository(Plats::class)->findOneBy(['id_plat'=>$id]);
 
+        $reservation->setPlatId($plat);
         $reservation->setDateReservation(new \DateTime('now'));
+        $reservation->setEtat(false);
 
         $form = $this->createForm(ReservationPlatsType::class,$reservation);
 
@@ -64,9 +82,15 @@ class ReservationRestoController extends AbstractController
     /**
      * @Route("/MesReservationPlat", name="MesReservationPlat")
      */
-    public function afficherReservationP(){
+    public function afficherReservationP(Request $request, PaginatorInterface $paginator){
         $r=$this->getDoctrine()->getRepository(ReservationPlats::class);
         $reservation=$r->findAll();
+
+        $reservation= $paginator->paginate(
+            $reservation,
+            $request->query->getInt('page',1),
+            2);
+
         return $this->render('Front/reservation_resto/MesReservations.html.twig', array('reservations'=>$reservation));
 
 
@@ -90,6 +114,7 @@ class ReservationRestoController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $res=$em->getRepository(ReservationPlats::class)->find($id);
+        $res->setEtat(false);
         $form=$this->createForm(ReservationPlatsType::class,$res);
 
         $form->handleRequest($request);
@@ -114,4 +139,110 @@ class ReservationRestoController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('reservation_resto_admin');
     }
+
+    public function modifierEtat($id){
+        $em = $this->getDoctrine()->getManager();
+        $res=$em->getRepository(ReservationPlats::class)->find($id);
+        $res->setEtat(true);
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($res);
+        $em->flush();
+
+    }
+
+    /**
+     * @Route ("ComfirmationReservation{id}",name="ComfirmationReservation")
+     */
+    public function ComfirmationReservation($id, \Swift_Mailer $mailer){
+
+
+
+        $reservation = $this->getDoctrine()->getRepository(ReservationPlats::class)->findOneBy(['id_resPlat'=> $id]);
+        $idc = $reservation->getClientId();
+        $idp = $reservation->getPlatId();
+        $dt =  $reservation->getDateReservation();
+        $qt = $reservation-> getQuantity();
+
+        $client = $this->getDoctrine()->getRepository(Clients::class)->findOneBy(['id_client'=> $idc]);
+        $email = $client->getEmail();
+        $nom = $client->getNom();
+
+        $plat = $this->getDoctrine()->getRepository(Plats::class)->findOneBy(['id_plat'=>$idp]);
+        $nomp = $plat->getNom();
+        $idr = $plat ->getRestoId();
+
+        $resto = $this->getDoctrine()->getRepository(Restaurants::class)->findOneBy(['id_resto'=>$idr]);
+        $nomr= $resto->getNom();
+
+        $message = (new \Swift_Message('Confirmation Email'))
+        ->setFrom('tuneasy.restaurants@gmail.com')
+        ->setTo($email)
+        ->setBody(
+            $this->renderView(
+                // templates/emails/registration.html.twig
+                'Back/emails/confirmation.html.twig',
+                ['nom' => $nom,
+                'nomr' => $nomr,
+                'nomp' => $nomp,
+                'dt' => $dt,
+                'qt'=>$qt]
+            ),
+            'text/html'
+        )
+    ;
+
+    $mailer->send($message);
+
+        $em = $this->getDoctrine()->getManager();
+        $res=$em->getRepository(ReservationPlats::class)->find($id);
+        $res->setEtat(true);
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($res);
+        $em->flush();
+
+        return $this->redirectToRoute('reservation_resto_admin');
+
+
+}
+    /**
+     * @Route("/statistiques",name="statistiques")
+     */
+    public function statistiques(): Response
+    {
+        $r=$this->getDoctrine()->getRepository(ReservationPlats::class);
+        $nbs = $r->getNb();
+        $p = $this->getDoctrine()->getRepository(Plats::class);
+
+
+
+        $data = [['Plats', 'Nombre de reservations']];
+
+        foreach($nbs as $nb)
+        {
+            $plat=$p->findOneBy(['id_plat'=>$nb['plat']]);
+            $nomp=$plat->getNom();
+            $idr = $plat ->getRestoId();
+
+            $resto = $this->getDoctrine()->getRepository(Restaurants::class)->findOneBy(['id_resto'=>$idr]);
+            $nomr= $resto->getNom();
+
+            $aux= $nomp.":".$nomr;
+
+
+
+            $data[] = array(
+                $aux, $nb['res'])
+            ;
+        }
+        $bar = new BarChart();
+        $bar->getData()->setArrayToDataTable(
+            $data
+        );
+        $bar->getOptions()->setTitle('Nombre de reservations par plat');
+        $bar->getOptions()->getTitleTextStyle()->setColor('#07600');
+        $bar->getOptions()->getTitleTextStyle()->setFontSize(25);
+        return $this->render('Back/Statistiques/statistiques.html.twig', array('barchart' => $bar,'nbs' => $nbs));
+
+    }
+
 }

@@ -13,17 +13,34 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 class RestaurantsController extends AbstractController
 {
     /**
      * @Route("/restaurants", name="restaurants")
      */
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $r=$this->getDoctrine()->getRepository(Restaurants::class);
         $restaurant=$r->findAll();
-        return $this->render('Front/restaurants/Restaurants.html.twig', array('restaurants'=>$restaurant));
+
+        if ($request->isMethod("POST"))
+        {
+            $nom_resto = $request->get("nom_resto");
+            $restaurant=$r->findBy(array("nom"=>$nom_resto));
+
+        }
+
+          $restaurants = $paginator->paginate(
+          $restaurant,
+          $request->query->getInt('page',1),
+          2
+
+        );
+
+        return $this->render('Front/restaurants/Restaurants.html.twig', array('restaurants'=>$restaurants));
 
 
     }
@@ -38,16 +55,7 @@ class RestaurantsController extends AbstractController
         return $this->render('Front/restaurants/det.html.twig', array('restaurant'=>$restaurant));
 
     }
-    /**
-     * @Route("/restaurantsAdmin", name="restaurantsAdmin")
-     */
-    public function restaurantAdmin(): Response
-    {
-        return $this->render('Back/restaurants/restaurantsAdmin.html.twig', [
-            'controller_name' => 'RestaurantsController',
-        ]);
 
-    }
     /**
      * @Route("/ajouterRestaurant", name="ajouteRestaurants")
      */
@@ -99,9 +107,23 @@ class RestaurantsController extends AbstractController
     /**
      * @Route("/restaurantsAdmin", name="restaurantsAdmin")
      */
-        public function afficherRestaurant(){
+        public function afficherRestaurant(Request $request, PaginatorInterface $paginator){
             $r=$this->getDoctrine()->getRepository(Restaurants::class);
             $restaurant=$r->findAll();
+
+            if ($request->isMethod("POST"))
+            {
+                $nom_resto = $request->get("nom_resto");
+                $restaurant=$r->findBy(array("nom"=>$nom_resto));
+
+            }
+
+               $restaurant = $paginator->paginate(
+                $restaurant,
+                $request->query->getInt('page',1),
+                1
+
+            );
             return $this->render('Back/restaurants/restaurantsAdmin.html.twig', array('restaurants'=>$restaurant));
 
 
@@ -117,6 +139,7 @@ class RestaurantsController extends AbstractController
             return $this->redirectToRoute('restaurantsAdmin');
 
         }
+
 
 
 

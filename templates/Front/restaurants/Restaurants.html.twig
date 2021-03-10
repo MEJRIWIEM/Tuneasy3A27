@@ -247,18 +247,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
+                        <form method="POST">
                         <div class="rt-banner-searchbox trip-search">
                             <div class="rt-input-group">
+
+
                                 <div class="single-input  col-md-9">
-                                    <input type="text" class="form-control" placeholder="Restaurants">
+                                    <input type="text" class="form-control" name="nom_resto" placeholder="Restaurants">
 
                                 </div><!-- /.single-input -->
                                 <div class="single-input  col-md-3">
-                                    <input type="submit" value="Search" class="rt-btn rt-gradient pill text-uppercase d-block rt-Bshadow-2">
+                                    <input type="submit"value="Search"  class="rt-btn rt-gradient pill text-uppercase d-block rt-Bshadow-2">
                                 </div><!-- /.single-input -->
+
                             </div><!-- /.rt-input-group -->
                         </div><!-- /.rt-banner-searchbox -->
-
+                        </form>
 
 
 
@@ -370,30 +374,11 @@
                                 </li>
                             </ul>
                         </div><!-- /.rt-widget -->
-                        <div class="rt-widget widget_range-slider">
-                            <h3 class="rt-widget-title">
-                                Filter by Price
-                            </h3><!-- /.rt-widget-title -->
 
-                            <div class="slider-range"></div>
-                            <div class="price_slider_amount">
-                                <div class="clearfix">
-                                    <div class="float-left">
-                                        <span>Price:</span>
-                                    </div><!-- /.float-left -->
-                                    <div class="float-right">
-                                        <input type="text" class="amount" name="price" placeholder="Add Your Price" />
-                                    </div><!-- /.float-right -->
-                                </div><!-- /.clearfix -->
-                            </div>
-                            <div class="text-center">
-                                <input type="submit" value="Filter" class="rt-btn rt-gradient rounded-sm rt-sm text-uppercase" />
-                            </div><!-- /.text-center -->
-                        </div><!-- /.rt-widget -->
 
                         <div class="rt-widget widget_tag">
                             <h3 class="rt-widget-title">
-                                Activities Transport
+                                Ville
                             </h3><!-- /.rt-widget-title -->
                             <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4"><i class="icofont-tag"></i></span> Cycling</a>
                             <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4"><i class="icofont-tag"></i></span> City Tour</a>
@@ -401,14 +386,7 @@
                             <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4"><i class="icofont-tag"></i></span> Train</a>
                             <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4"><i class="icofont-tag"></i></span> Car with driver</a>
                         </div><!-- /.rt-widget -->
-                        <div class="rt-widget widget_">
-                            <h3 class="rt-widget-title">
-                                Main travel focus
-                            </h3><!-- /.rt-widget-title -->
-                            <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4 primary-color"><i class="icofont-check"></i></span> Cultural visits</a>
-                            <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4 primary-color"><i class="icofont-check"></i></span> Nature & landscapes</a>
-                            <a href="#" class="rt-tag-cloud d-block text-333"><span class="rt-mr-4 primary-color"><i class="icofont-check"></i></span> Relaxing moments</a>
-                        </div><!-- /.rt-widget -->
+
                     </div><!-- /.rt-sidebar-group -->
                 </div><!-- /.col-lg-3 -->
                 <div class="col-lg-9">
@@ -443,7 +421,7 @@
                                         <span class="text-555 f-size-16 d-block rt-mt-15"><span class="rt-mr-15"><i class="icofont-users-alt-5 primary-color rt-mr-4"></i>Family Trip</span> <span> <i class="icofont-user primary-color rt-mr-4"></i>Private Tour</span></span> -->
                                     </div><!-- /.left- -->
                                     <div class="right_column text-left text-md-right">
-                                        <span class="d-block text-primary f-size-24 rt-semiblod title-font">6-50 tnd</span>
+
 
                                     </div><!-- /.right -->
                                 </div><!-- /.middle-text -->
@@ -461,7 +439,13 @@
                     </div><!-- /.hotel-list-box -->
                     {% endfor %}
 
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination  justify-content-center">
+                            {{ knp_pagination_render(restaurants) }}
 
+
+                        </ul>
+                    </nav>
 
 
 

@@ -285,10 +285,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
+                        <form method="POST">
                         <div class="rt-banner-searchbox trip-search">
                             <div class="rt-input-group">
                                 <div class="single-input  col-md-9">
-                                    <input type="text" class="form-control" placeholder="Plats">
+                                    <input type="text" class="form-control" name="nom_plat" placeholder="Plats">
 
                                 </div><!-- /.single-input -->
                                 <div class="single-input  col-md-3">
@@ -296,6 +297,7 @@
                                 </div><!-- /.single-input -->
                             </div><!-- /.rt-input-group -->
                         </div><!-- /.rt-banner-searchbox -->
+                        </form>
 
 
                     </div><!-- /.col-lg-10 -->
@@ -342,76 +344,7 @@
                                             </div><!-- /.text-center -->
                                         </div><!-- /.rt-widget -->
 
-                                        <div class="rt-widget widget_plane_time">
-                                            <h3 class="rt-widget-title">
-                                                Airlines included
-                                            </h3><!-- /.rt-widget-title -->
-                                            <ul>
-                                                <li class="clearfix">
 
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-3">
-                                                        <label class="form-check-label" for="gridCheckrt-3">
-                                                            Delta (16)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$1,511</span>
-                                                </li>
-                                                <li class="clearfix">
-
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-4">
-                                                        <label class="form-check-label" for="gridCheckrt-4">
-                                                            Aer Lingus (11)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$1106</span>
-                                                </li>
-                                                <li class="clearfix">
-
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-5">
-                                                        <label class="form-check-label" for="gridCheckrt-5">
-                                                            Iberia (7)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$1885</span>
-                                                </li>
-                                                <li class="clearfix">
-
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-51">
-                                                        <label class="form-check-label" for="gridCheckrt-51">
-                                                            British Airways (11)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$$1185</span>
-                                                </li>
-                                                <li class="clearfix">
-
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-6">
-                                                        <label class="form-check-label" for="gridCheckrt-6">
-                                                            KLM (7)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$1885</span>
-                                                </li>
-                                                <li class="clearfix">
-
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheckrt-6s">
-                                                        <label class="form-check-label" for="gridCheckrt-6s">
-                                                            Finnair (6)
-                                                        </label>
-                                                    </div><!-- ./orm-group -->
-                                                    <span class="float-right">$1885</span>
-                                                </li>
-                                            </ul>
-                                            <div class="show-more-links">
-                                                <a href="#">Show more</a>
-                                            </div><!-- /.show-more-links -->
-                                        </div><!-- /.rt-widget -->
                                         <style>
                                             #spbt {
                                                 display: flex;
@@ -491,14 +424,8 @@
                                         {% endfor %}
                                     </div><!-- /.row -->
                                     <nav aria-label="Page navigation example">
-                                        <ul class="pagination  rt-paganation justify-content-center">
-                                            <li class="page-item"><a class="page-link" href="#"><i class="icofont-rounded-double-left"></i></a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                            <li class="page-item"><a class="page-link" href="#"><i class="icofont-rounded-double-right"></i></a>
-                                            </li>
+                                        <ul class="pagination justify-content-center">
+                                            {{ knp_pagination_render(plats) }}
                                         </ul>
                                     </nav>
                                 </div><!-- /.col-lg-9 -->

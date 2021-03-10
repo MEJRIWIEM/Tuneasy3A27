@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReservationPlatsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -42,6 +43,34 @@ class ReservationPlats
      *
      */
     private $dateReservation;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $etat;
+
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat): void
+    {
+        $this->etat = $etat;
+    }
+
+    /**
+     * @return mixed
+     */
+
+
+
 
     public function getIdResPlat(): ?int
     {

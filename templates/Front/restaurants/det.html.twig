@@ -275,8 +275,7 @@
                                     class="pl-2 text-777">| {{ restaurant.type }}</span></p>
                         <p class="rt-mt-15 rt-mb-20">
                             <span class="badge rt-gradinet-badge pill rt-mr-10"> {{ restaurant.note }} <small>/5</small></span>
-                            <span class="primary-color rt-mr-10">Excellent</span>
-                            <span class="f-size-12 text-878">( 86 Reviews )</span>
+
                         </p>
                         <p class="f-size-14 text-333"> {{ restaurant.adresse }}</p>
                         <p class="primary-color">
@@ -299,13 +298,7 @@
                         </div><!-- /.d-flex -->
                         <div class="rt-divider style-one rt-mt-30"></div><!-- /.rt-divider -->
                         <div class="rt-mt-25">
-                            <ul class="rt-social normal-style-one ">
-                                <li><span class="f-size-14"><strong>Share Link:</strong></span></li>
-                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                <li><a href="#"><i class="icofont-linkedin"></i></a></li>
-                                <li><a href="#"><i class="icofont-google-plus"></i></a></li>
-                            </ul>
+
                         </div><!-- /. social -->
                     </div><!-- /.hotel-text -->
                 </div><!-- /.col-lg-5 -->
@@ -318,7 +311,7 @@
                                 role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="rt-itm_1-tab" data-toggle="tab" href="#rt-itm_1"
-                                       role="tab" aria-controls="rt-itm_1" aria-selected="true">Overview</a>
+                                       role="tab" aria-controls="rt-itm_1" aria-selected="true">Contact</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -327,10 +320,7 @@
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link" id="rt-itm_6-tab" data-toggle="tab" href="#rt-itm_6" role="tab"
-                                       aria-controls="rt-itm_6" aria-selected="false">Reviews</a>
-                                </li>
+
                             </ul>
                         </div><!-- /.hotle-del-box -->
 
@@ -341,8 +331,12 @@
                                     <div class="inner-content rt-pl-15">
                                         <h4
                                                 class="badge-hilighit color--1 f-size-14 text-white text-font text-uppercase rt-mb-30 rt-mt-15 rt-strong">
-                                            HIGHLIGHTS</h4>
-                                        <p>Le Restaurant Cook'In vous accueille dans une ambiance Romantique, Chic et Animée et vous propose des spécialités Fruits de Mer et méditerranéenne</p>
+                                            N°Telephone: </h4>
+                                        <p>{{ restaurant.num_tel }}</p>
+                                        <h4
+                                                class="badge-hilighit color--1 f-size-14 text-white text-font text-uppercase rt-mb-30 rt-mt-15 rt-strong">
+                                            Adresse Email: </h4>
+                                        <p>{{ restaurant.email }}</p>
 
                                     </div><!-- /.inner-content -->
                                 </div><!-- /.flight-list-box -->
@@ -632,7 +626,7 @@
 
                             <div class="tab-pane fade" id="rt-itm_5" role="tabpanel" aria-labelledby="rt-itm_5-tab">
                                 <div class="flight-list-box rt-mb-30">
-
+                                    <iframe src="http://maps.google.com/maps?q={{ restaurant.nom }}&z=10&output=embed" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
                                 </div><!-- /.flight-list-box -->
 

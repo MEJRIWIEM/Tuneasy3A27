@@ -18,7 +18,24 @@ class ReservationPlatsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ReservationPlats::class);
     }
+    public function getNB()
+    {
 
+        $qb = $this->createQueryBuilder('r')
+            ->select('COUNT(r.id_resPlat) AS res, (r.platId) AS plat')
+            ->groupBy('plat');
+
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+    public function trierdate()
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->orderBy('r.dateReservation', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
     // /**
     //  * @return ReservationPlats[] Returns an array of ReservationPlats objects
     //  */

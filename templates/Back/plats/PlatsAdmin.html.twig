@@ -33,26 +33,18 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Recherche :</h4>
+                                <form method="POST">
                                 <div class="form-group">
-                                    <label>Select A Restaurant </label>
-                                    <select class="js-example-basic-single w-100">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="AM">America</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="RU">Russia</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Plats" name="nom_plat" aria-label="Recipient's username">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-sm btn-primary" type="submit"value="Search" type="button">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Select A Dish </label>
-                                    <select class="js-example-basic-single w-100">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
-                                        <option value="AM">America</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="RU">Russia</option>
-                                    </select>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -128,6 +120,7 @@
 
                                         </tbody>
                                     </table>
+                                    {{ knp_pagination_render(plats) }}
                                 </div>
                             </div>
                         </div>

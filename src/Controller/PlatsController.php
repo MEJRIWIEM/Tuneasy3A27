@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Plats;
 use App\Form\PlatsType;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,10 +21,23 @@ class PlatsController extends AbstractController
     /**
      * @Route("/platsAdmin", name="platsAdmin")
      */
-    public function platsAdmin(): Response
+    public function platsAdmin(Request $request, PaginatorInterface $paginator): Response
     {
         $p=$this->getDoctrine()->getRepository(Plats::class);
         $plat=$p->findAll();
+        if ($request->isMethod("POST"))
+        {
+            $nom_plat = $request->get("nom_plat");
+            $plat=$p->findBy(array("nom"=>$nom_plat));
+
+        }
+
+            $plat =$paginator->paginate(
+            $plat,
+            $request->query->getInt('page',1),
+            1
+
+        );
         return $this->render('Back/plats/PlatsAdmin.html.twig', array('plats'=>$plat));
     }
 
@@ -89,10 +104,26 @@ class PlatsController extends AbstractController
     /**
      * @Route("/plats{id}", name="plats")
      */
-         public function platFront( $id): Response
+         public function platFront( $id,Request $request, PaginatorInterface $paginator): Response
     {
         $p=$this->getDoctrine()->getRepository(Plats::class);
         $plats=$p->findBy(['restoId'=> $id]);
+
+        if ($request->isMethod("POST"))
+        {
+            $nom_plat = $request->get("nom_plat");
+            $plats=$p->findBy(array("nom"=>$nom_plat));
+
+        }
+
+        $plats =$paginator->paginate(
+          $plats,
+          $request->query->getInt('page',1),
+          2
+
+        );
+
+
         return $this->render('Front/plats/Plats.html.twig', array('plats'=>$plats));
     }
 

@@ -42,7 +42,7 @@ class Plats
     private $composition;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      * @Assert\NotBlank(message="Prix est obligatoire")
      */
     private $prix;
@@ -113,12 +113,12 @@ class Plats
         return $this;
     }
 
-    public function getPrix(): ?int
+    public function getPrix(): ?float
     {
         return $this->prix;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrix(float $prix): self
     {
         $this->prix = $prix;
 

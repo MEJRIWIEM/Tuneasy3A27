@@ -27,7 +27,7 @@ class ReservationPlatsType extends AbstractType
             ])
             ->add('platId',EntityType::class,[
                 'class' => Plats::class,
-                'choice_label'=>'id_plat',
+                'choice_label'=>'nom',
 
 
             ])
