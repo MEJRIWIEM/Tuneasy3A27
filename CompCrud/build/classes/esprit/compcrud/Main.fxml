@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.compcrud.MainController">
+   <children>
+      <VBox layoutX="23.0" layoutY="14.0" prefHeight="398.0" prefWidth="158.0" spacing="18.0">
+         <children>
+            <Label text="Id" />
+            <Label text="Nom" />
+            <Label text="Description" />
+            <Label text="Categorie" />
+            <Label text="Nombre De  place" />
+            <Label text="Image" />
+            <Label text="Adresse" />
+            <Label text="Date" />
+         </children>
+      </VBox>
+      <VBox layoutX="170.0" layoutY="14.0" prefHeight="398.0" prefWidth="182.0" spacing="10.0">
+         <children>
+            <TextField fx:id="tfid" />
+            <TextField fx:id="tfnom" />
+            <TextField fx:id="tfdescription" />
+            <TextField fx:id="tfcategorie" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="tfnombredeplace" layoutX="10.0" layoutY="36.0" />
+            <TextField fx:id="tfimage" layoutX="10.0" layoutY="61.0" />
+            <TextField fx:id="tfadresse" />
+            <TextField fx:id="tfdate" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvcompetition" layoutX="3.0" layoutY="294.0" onMouseClicked="#handleMouseAction" prefHeight="263.0" prefWidth="794.0">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="36.79998779296875" text="id" />
+          <TableColumn fx:id="colnom" prefWidth="68.80001831054688" text="nom" />
+            <TableColumn fx:id="coldescription" prefWidth="140.79998779296875" text="description" />
+            <TableColumn fx:id="colcategorie" prefWidth="95.20001220703125" text="categorie" />
+            <TableColumn fx:id="colnombredeplace" prefWidth="107.20001220703125" text="nombre de place" />
+            <TableColumn fx:id="colimage" prefWidth="104.79998779296875" text="url IMAGE" />
+            <TableColumn fx:id="coladresse" prefWidth="104.79998779296875" text="ADRESSE" />
+            <TableColumn fx:id="coldate" prefWidth="121.5999755859375" text="DATE" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="435.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleButtonAction" text="AJOUTER" />
+      <Button fx:id="btnmodifier" layoutX="550.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleButtonAction" text="MODIFIER" />
+      <Button fx:id="btnsupprimer" layoutX="657.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleButtonAction" text="SUPPRIMER" />
+      <Pagination fx:id="pagination" layoutY="290.0" prefHeight="325.0" prefWidth="816.0" />
+      <Label layoutX="519.0" layoutY="231.0" text="Search  Box" />
+      <TextField fx:id="filterField" layoutX="607.0" layoutY="227.0" />
+      <Button fx:id="printbtn" layoutX="555.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleButtonAction" text="IMPRIMER" />
+   </children>
+</AnchorPane>
