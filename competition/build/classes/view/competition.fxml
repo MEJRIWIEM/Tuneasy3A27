@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="742.0" style="-fx-background-color: #02030A;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contoller.CompetitionController">
+   <children>
+      <Label layoutX="93.0" layoutY="51.0" prefHeight="17.0" prefWidth="104.0" text="Nom :" textFill="#e7e5e5" />
+      <Label layoutX="85.0" layoutY="121.0" prefHeight="17.0" prefWidth="104.0" text="Description :" textFill="#e7e5e5" />
+      <Label layoutX="85.0" layoutY="187.0" prefHeight="17.0" prefWidth="104.0" text="Category :" textFill="#e7e5e5" />
+      <Label layoutX="85.0" layoutY="224.0" prefHeight="17.0" prefWidth="104.0" text="Nombre de place :" textFill="#e7e5e5" />
+      <Label layoutX="85.0" layoutY="253.0" prefHeight="17.0" prefWidth="104.0" text="Adresse :" textFill="#e7e5e5" />
+      <TextField fx:id="tf_nom_competition" layoutX="197.0" layoutY="47.0" promptText="Nom" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" stylesheets="@style.css" />
+      <TextArea fx:id="tf_description_competition" layoutX="197.0" layoutY="86.0" prefHeight="86.0" prefWidth="200.0" promptText="Description" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" stylesheets="@style.css" />
+      <ComboBox fx:id="combox_category_competition" layoutX="197.0" layoutY="183.0" onAction="#comboChange_competition" prefWidth="150.0" promptText="Select Categorie" />
+      <TextField fx:id="tf_nbPlace_competition" layoutX="198.0" layoutY="220.0" promptText="Nombre De Place" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" />
+      <TextField fx:id="tf_adresse_competition" layoutX="198.0" layoutY="258.0" promptText="Adresse" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" />
+      <TableView fx:id="tableCompetition" layoutX="55.0" layoutY="331.0" onMouseClicked="#handleAction" prefHeight="210.0" prefWidth="647.0">
+        <columns>
+          <TableColumn fx:id="col_nom_competition" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="col_description_competition" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="col_categorie_competition" prefWidth="75.0" text="Categorie" />
+            <TableColumn fx:id="col_nbplace_competition" prefWidth="122.0" text="Nombre de palce" />
+            <TableColumn fx:id="col_image_competition" prefWidth="82.0" text="Image" />
+            <TableColumn fx:id="col_adresse_competition" prefWidth="108.0" text="Adresse" />
+            <TableColumn fx:id="col_date_competition" prefWidth="108.0" text="Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_ajouter_competition" layoutX="433.0" layoutY="249.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Button fx:id="btn_delete_competition" layoutX="507.0" layoutY="249.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <TextField fx:id="tf_recherche_competition" layoutX="553.0" layoutY="300.0" promptText="chercher" style="-fx-border-color: #B7C3D7; -fx-background-color: #02030A; -fx-border-radius: 2em;" />
+      <Label layoutX="467.0" layoutY="304.0" prefHeight="17.0" prefWidth="74.0" text="recherche :" textFill="#e7e5e5" />
+      <ImageView fx:id="exit_image_competition" fitHeight="25.0" fitWidth="31.0" layoutX="687.0" layoutY="22.0" onMousePressed="#exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/close.png" />
+         </image></ImageView>
+      <Button fx:id="btn_update_competition" layoutX="576.0" layoutY="249.0" mnemonicParsing="false" onAction="#modifier" text="Update" />
+      <Button fx:id="btn_add_res_com_nb_des_participants" layoutX="462.0" layoutY="212.0" mnemonicParsing="false" onAction="#Detail_Resevation_competition" text="Ajouter des participants" />
+      <Label fx:id="label_id_comeption" layoutX="27.0" layoutY="26.0" text="Label" />
+      <Label fx:id="label_nb_des_participants" layoutX="481.0" layoutY="67.0" prefHeight="137.0" prefWidth="104.0" textAlignment="CENTER" textFill="#ddd9d9">
+         <font>
+            <Font name="Lucida Sans Regular" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
