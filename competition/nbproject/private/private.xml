@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/java/competition/src/contoller/BackcompetitionController.java</file>
+            <file>file:/D:/java/competition/src/contoller/CompetitionController.java</file>
+            <file>file:/D:/java/competition/src/contoller/Reservation_competitionController.java</file>
+            <file>file:/D:/java/competition/src/services/competitionCRUD.java</file>
+            <file>file:/D:/java/competition/src/services/reservation_competitionCRUD.java</file>
+            <file>file:/D:/java/competition/src/contoller/Reservation_competition_modifController.java</file>
+        </group>
     </open-files>
 </project-private>
