@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BackmaterielController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="517.0" prefWidth="881.0">
+         <children>
+            <TableView fx:id="tableMateriel" layoutX="117.0" layoutY="37.0" onMouseClicked="#handleAction" prefHeight="210.0" prefWidth="647.0">
+               <columns>
+                  <TableColumn fx:id="col_nom_materiel" prefWidth="131.0" text="Nom" />
+                  <TableColumn fx:id="col_description_materiel" prefWidth="231.0" text="Description" />
+                  <TableColumn fx:id="col_prix_materiel" prefWidth="136.0" text="Prix" />
+                  <TableColumn fx:id="col_photo_materiel" prefWidth="148.0" text="Photo" />
+               </columns>
+            </TableView>
+            <Button fx:id="PDF_materiel" layoutX="700.0" layoutY="259.0" mnemonicParsing="false" onAction="#PDF" text="PDF" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

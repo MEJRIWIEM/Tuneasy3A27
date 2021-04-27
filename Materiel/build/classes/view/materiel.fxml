@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MaterielController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="572.0" prefWidth="742.0" style="-fx-background-color: #02030A;" stylesheets="@../../../competition/src/view/style.css">
+         <children>
+            <Label layoutX="93.0" layoutY="51.0" prefHeight="17.0" prefWidth="104.0" text="Nom :" textFill="#e7e5e5" />
+            <Label layoutX="85.0" layoutY="121.0" prefHeight="17.0" prefWidth="104.0" text="Description :" textFill="#e7e5e5" />
+            <Label layoutX="85.0" layoutY="224.0" prefHeight="17.0" prefWidth="104.0" text="Prix :" textFill="#e7e5e5" />
+            <Label layoutX="85.0" layoutY="253.0" prefHeight="17.0" prefWidth="104.0" text="Image : " textFill="#e7e5e5" />
+            <TextField fx:id="tf_nom_materiel" layoutX="197.0" layoutY="47.0" promptText="Nom" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" stylesheets="@../../../competition/src/view/style.css" />
+            <TextArea fx:id="tf_description_materiel" layoutX="197.0" layoutY="86.0" prefHeight="86.0" prefWidth="200.0" promptText="Description" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" stylesheets="@../../../competition/src/view/style.css" />
+            <TextField fx:id="tf_prix_materiel" layoutX="198.0" layoutY="220.0" promptText="Prix" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" />
+            <TextField fx:id="tf_photo_materiel" layoutX="198.0" layoutY="258.0" promptText="Image" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7;" />
+            <TableView fx:id="tableMateriel" layoutX="55.0" layoutY="331.0" onMouseClicked="#handleAction" prefHeight="210.0" prefWidth="647.0">
+               <columns>
+                  <TableColumn fx:id="col_nom_materiel" prefWidth="156.0" text="Nom" />
+                  <TableColumn fx:id="col_description_materiel" prefWidth="246.0" text="Description" />
+                  <TableColumn fx:id="col_prix_materiel" prefWidth="137.0" text="Prix" />
+                  <TableColumn fx:id="col_photo_materiel" prefWidth="107.0" text="Photo" />
+               </columns>
+            </TableView>
+            <Button fx:id="btn_ajouter_materiel" layoutX="433.0" layoutY="249.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+            <Button fx:id="btn_delete_materiel" layoutX="507.0" layoutY="249.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            <TextField fx:id="tf_recherche_materiel" layoutX="553.0" layoutY="300.0" promptText="Recherche" style="-fx-border-color: #B7C3D7; -fx-background-color: #02030A; -fx-border-radius: 2em;" />
+            <Label layoutX="467.0" layoutY="304.0" prefHeight="17.0" prefWidth="74.0" text="Recherche :" textFill="#e7e5e5" />
+            <ImageView fx:id="exit_image_competition" fitHeight="25.0" fitWidth="31.0" layoutX="687.0" layoutY="22.0" onMousePressed="#exit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../competition/src/img/close.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_update_materiel" layoutX="576.0" layoutY="249.0" mnemonicParsing="false" onAction="#modifier" text="Update" />
+            <Label fx:id="label_id_materiel" layoutX="27.0" layoutY="26.0" text="Label" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
