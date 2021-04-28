@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="gridpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="738.0" style="-fx-border-color: #B7C3D7; -fx-border-radius: 2em;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints />
+    <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button fx:id="btn_supp" mnemonicParsing="false" style="-fx-border-color: #B7C3D7;" stylesheets="@btn.css" text="Supprimer" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="90.0" />
+         </GridPane.margin></Button>
+      <Button fx:id="btn_mod" mnemonicParsing="false" style="-fx-border-color: #B7C3D7;" stylesheets="@btn.css" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="100.0" />
+         </GridPane.margin></Button>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <Label text="Id réservation: " textFill="#fa4072">
+               <font>
+                  <Font name="Calibri Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_réservation" text="Label">
+               <font>
+                  <Font name="Calibri" size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets left="5.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label text="Titre" textFill="#fa4072">
+               <font>
+                  <Font name="Calibri Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_client" text="Label">
+               <font>
+                  <Font name="Calibri" size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="id_evenement" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+   </children>
+</GridPane>
